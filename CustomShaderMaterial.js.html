@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CustomShaderMaterial.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="nav">
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CustomShaderMaterial.html">CustomShaderMaterial</a><ul class='methods'><li data-type='method'><a href="CustomShaderMaterial.html#updateUniform">updateUniform</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">CustomShaderMaterial.js</h1>
+    
+
+    <!--container.tmpl-->
+
+
+
+
+    <!--source.tmpl-->
+
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import * as THREE from "three";
+import { TYPES } from "./Types";
+
+/**
+ * This class lets you use your own custom Vertex Shaders along with
+ * predefined ThreeJS Fragmet Shaders. This takes away the hastle of
+ * writing code for lighting and shaing.
+ */
+export class CustomShaderMaterial extends THREE.ShaderMaterial {
+  /**
+   * Creates an instance of the &lt;code>CustomShaderMaterial&lt;/code> class.
+   *
+   * &lt;b>The variable &lt;code>newPos&lt;/code> and &lt;code>newNormal&lt;/code> must be
+   * defined in the main section of the indjected shader.&lt;/b>
+   *
+   * @typedef
+   *
+   * @param {Object} options                Options for material.
+   * @param {string} options.baseMaterial   Base Material. The material whos fragment shader is used. Any type from the exported &lt;code>TYPES&lt;/code> object
+   * @param {Object} options.vShader        Custom Vertex Shader
+   * @param {string} options.vShader.defines        Constant definitions like - "#define PI = 3.14;"
+   * @param {string} options.vShader.header         Code to be injected above main. Place function definitions here.
+   * @param {string} options.vShader.main           Code to be injected above main. Put main shader code here.
+   * @param {Object} options.uniforms       Custom Uniforms to be passed to the shader.
+   * @param {Object} options.passthrough    Any custom options to be passed to the underlying base material.
+   */
+  constructor(options) {
+    const { baseMaterial, vShader, uniforms, passthrough } = options;
+    const baseShader = THREE.ShaderLib[baseMaterial];
+
+    if (baseShader === undefined) throw "Invalid Base Material Type";
+
+    super({
+      uniforms: THREE.UniformsUtils.merge([baseShader.uniforms, ...uniforms]),
+
+      extensions: {
+        derivatives: true,
+      },
+
+      vertexShader: _patchShader(THREE.ShaderChunk.meshphysical_vert, vShader),
+      fragmentShader: baseShader.fragmentShader,
+      lights:
+        baseMaterial === TYPES.PHYSICAL ||
+        baseMaterial === TYPES.TOON ||
+        baseMaterial === TYPES.PHONG,
+      ...passthrough,
+    });
+
+    this._baseMaterial = baseMaterial;
+  }
+
+  /**
+   * This funciton lets you update a custom uniform you have set.
+   * Make sure to address the uniform by the name of its key.
+   *
+   * @param {string} unifrom Name of the Unifrom to update
+   * @param {any} value      Value to set.
+   */
+  updateUniform(unifrom, value) {
+    this.uniforms[unifrom].value = value;
+  }
+}
+
+/**
+ * From https://codepen.io/marco_fugaro/pen/xxZWPWJ?editors=0010
+ */
+function _patchShader(shader, { defines = "", header = "", main = "" }) {
+  let patchedShader = shader;
+
+  const replaces = {
+    "#include &lt;defaultnormal_vertex>": THREE.ShaderChunk.defaultnormal_vertex.replace(
+      "vec3 transformedNormal = objectNormal;",
+      `vec3 transformedNormal = newNormal;`
+    ),
+
+    "#include &lt;displacementmap_vertex>": `
+          transformed = newPos;
+        `,
+  };
+
+  const replaceAll = (str, find, rep) => str.split(find).join(rep);
+  Object.keys(replaces).forEach((key) => {
+    patchedShader = replaceAll(patchedShader, key, replaces[key]);
+  });
+
+  patchedShader = patchedShader.replace(
+    "void main() {",
+    `
+      ${header}
+      void main() {
+        ${main}
+      `
+  );
+
+  return `
+      ${defines}
+      ${patchedShader}
+    `;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Mon May 03 2021 21:24:18 GMT+0000 (Coordinated Universal Time) using the LOKE theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

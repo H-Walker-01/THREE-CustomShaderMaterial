@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CustomShaderMaterial - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="nav">
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CustomShaderMaterial.html">CustomShaderMaterial</a><ul class='methods'><li data-type='method'><a href="CustomShaderMaterial.html#updateUniform">updateUniform</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">CustomShaderMaterial</h1>
+    
+
+    <!--container.tmpl-->
+
+
+
+
+
+<section>
+
+
+
+<header data-tmpl="container.tmpl">
+    
+        <h2>
+        CustomShaderMaterial
+        </h2>
+        
+            <div class="lead"><p>This class lets you use your own custom Vertex Shaders along with
+predefined ThreeJS Fragmet Shaders. This takes away the hastle of
+writing code for lighting and shaing.</p></div>
+        
+    
+
+    
+      <div class="bs-callout bs-callout-default">
+        <h5>Members</h5>
+        <br />
+        <dl class="dl-horizontal methods-members">
+        <dt>Methods</dt><dd><ul>
+            <li><a href="#updateUniform">updateUniform</a></li>
+            </ul></dd></dl></div>
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        <!--method.tmpl-->
+<div class="method-details">
+
+
+
+
+
+    
+    <h3 class="constructor">Constructor</h3>
+    
+
+    
+      <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="CustomShaderMaterial.js.html">CustomShaderMaterial.js</a>:<a href="CustomShaderMaterial.js.html#line9">9</a>
+  </code>
+</div>
+
+    
+
+    <h4 class="name" id="CustomShaderMaterial">
+      <a href="#params-CustomShaderMaterial"><span class="type-signature"></span>new CustomShaderMaterial</a><span class="signature">(options)</span><span class="type-signature"></span>
+
+    </h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="description">
+    <p>Creates an instance of the <code>CustomShaderMaterial</code> class.</p>
+<p><b>The variable <code>newPos</code> and <code>newNormal</code> must be
+defined in the main section of the indjected shader.</b></p>
+</div>
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-CustomShaderMaterial">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+  <div id="params-CustomShaderMaterial" class="bs-callout bs-callout-primary">
+    <h5>Parameters</h5>
+    <!--params.tmpl-->
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Options for material.</p>
+                <h6>Properties</h6>
+                <!--params.tmpl-->
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>baseMaterial</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Base Material. The material whos fragment shader is used. Any type from the exported <code>TYPES</code> object</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>vShader</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Custom Vertex Shader</p>
+                <h6>Properties</h6>
+                <!--params.tmpl-->
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>defines</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Constant definitions like - &quot;#define PI = 3.14;&quot;</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>header</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Code to be injected above main. Place function definitions here.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>main</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Code to be injected above main. Put main shader code here.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>uniforms</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Custom Uniforms to be passed to the shader.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>passthrough</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Any custom options to be passed to the underlying base material.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\n * This class lets you use your own custom Vertex Shaders along with\n * predefined ThreeJS Fragmet Shaders. This takes away the hastle of\n * writing code for lighting and shaing.\n */","meta":{"range":[253,2418],"filename":"CustomShaderMaterial.js","lineno":9,"columnno":0,"path":"/home/runner/work/THREE-CustomShaderMaterial/THREE-CustomShaderMaterial/src","code":{"id":"astnode100000010","name":"exports.CustomShaderMaterial","type":"ClassDeclaration"},"shortpath":"CustomShaderMaterial.js"},"name":"CustomShaderMaterial","longname":"CustomShaderMaterial","kind":"class","classdesc":"<p>This class lets you use your own custom Vertex Shaders along with\npredefined ThreeJS Fragmet Shaders. This takes away the hastle of\nwriting code for lighting and shaing.</p>","scope":"global","description":"<p>Creates an instance of the <code>CustomShaderMaterial</code> class.</p>\n<p><b>The variable <code>newPos</code> and <code>newNormal</code> must be\ndefined in the main section of the indjected shader.</b></p>","memberof":"CustomShaderMaterial","params":[{"type":{"names":["Object"]},"description":"<p>Options for material.</p>","name":"options","subparams":[{"type":{"names":["string"]},"description":"<p>Base Material. The material whos fragment shader is used. Any type from the exported <code>TYPES</code> object</p>","name":"baseMaterial"},{"type":{"names":["Object"]},"description":"<p>Custom Vertex Shader</p>","name":"vShader","subparams":[{"type":{"names":["string"]},"description":"<p>Constant definitions like - &quot;#define PI = 3.14;&quot;</p>","name":"defines"},{"type":{"names":["string"]},"description":"<p>Code to be injected above main. Place function definitions here.</p>","name":"header"},{"type":{"names":["string"]},"description":"<p>Code to be injected above main. Put main shader code here.</p>","name":"main"}]},null,null,null,{"type":{"names":["Object"]},"description":"<p>Custom Uniforms to be passed to the shader.</p>","name":"uniforms"},{"type":{"names":["Object"]},"description":"<p>Any custom options to be passed to the underlying base material.</p>","name":"passthrough"}]},null,null,null,null,null,null,null],"___id":"T000003R000002","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"CustomShaderMaterial","signature":"<span class=\"signature\">(options)</span><span class=\"type-signature\"></span>","ancestors":[]}
+</pre>
+-->
+</div>
+
+    
+    </div>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="CustomShaderMaterial.html">CustomShaderMaterial</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="CustomShaderMaterial.js.html">CustomShaderMaterial.js</a>:<a href="CustomShaderMaterial.js.html#line59">59</a>
+  </code>
+</div>
+
+
+
+
+    
+
+    
+
+    <h4 class="name" id="updateUniform">
+      <a href="#params-updateUniform"><span class="type-signature"></span>updateUniform</a><span class="signature">(unifrom, value)</span><span class="type-signature"></span>
+
+    </h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="description">
+    <p>This funciton lets you update a custom uniform you have set.
+Make sure to address the uniform by the name of its key.</p>
+</div>
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-updateUniform">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+  <div id="params-updateUniform" class="bs-callout bs-callout-primary">
+    <h5>Parameters</h5>
+    <!--params.tmpl-->
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>unifrom</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the Unifrom to update</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Value to set.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\n   * This funciton lets you update a custom uniform you have set.\n   * Make sure to address the uniform by the name of its key.\n   *\n   * @param {string} unifrom Name of the Unifrom to update\n   * @param {any} value      Value to set.\n   */","meta":{"range":[2339,2416],"filename":"CustomShaderMaterial.js","lineno":59,"columnno":2,"path":"/home/runner/work/THREE-CustomShaderMaterial/THREE-CustomShaderMaterial/src","code":{"id":"astnode100000108","name":"CustomShaderMaterial#updateUniform","type":"MethodDefinition","paramnames":["unifrom","value"]},"vars":{"":null},"shortpath":"CustomShaderMaterial.js"},"description":"<p>This funciton lets you update a custom uniform you have set.\nMake sure to address the uniform by the name of its key.</p>","params":[{"type":{"names":["string"]},"description":"<p>Name of the Unifrom to update</p>","name":"unifrom"},{"type":{"names":["any"]},"description":"<p>Value to set.</p>","name":"value"}],"name":"updateUniform","longname":"CustomShaderMaterial#updateUniform","kind":"function","memberof":"CustomShaderMaterial","scope":"instance","___id":"T000002R000018","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"updateUniform","signature":"<span class=\"signature\">(unifrom, value)</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"CustomShaderMaterial.html\">CustomShaderMaterial</a>#"]}
+</pre>
+-->
+</div>
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Mon May 03 2021 21:24:18 GMT+0000 (Coordinated Universal Time) using the LOKE theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
