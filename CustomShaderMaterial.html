@@ -235,6 +235,8 @@ defined in the main section of the indjected shader.</b></p>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -260,6 +262,14 @@ defined in the main section of the indjected shader.</b></p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -276,113 +286,60 @@ defined in the main section of the indjected shader.</b></p>
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#CustomShader">CustomShader</a></span>
 
 
             
             </td>
 
             
-
-            
-
-            <td class="description last"><p>Custom Vertex Shader</p>
-                <h6>Properties</h6>
-                <!--params.tmpl-->
-
-
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>defines</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">string</span>
 
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
 
             
-            </td>
 
-            
-
-            
-
-            <td class="description last"><p>Constant definitions like - &quot;#define PI = 3.14;&quot;</p></td>
+            <td class="description last"><p>Custom Vertex Shader</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>header</code></td>
+                <td class="name"><code>fShader</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type"><a href="global.html#CustomShader">CustomShader</a></span>
 
 
             
             </td>
 
             
-
-            
-
-            <td class="description last"><p>Code to be injected above main. Place function definitions here.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>main</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">string</span>
 
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
 
             
-            </td>
 
-            
-
-            
-
-            <td class="description last"><p>Code to be injected above main. Put main shader code here.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last"><p>Custom Fragment Shader</p></td>
         </tr>
 
     
@@ -401,6 +358,14 @@ defined in the main section of the indjected shader.</b></p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -424,6 +389,14 @@ defined in the main section of the indjected shader.</b></p>
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -466,7 +439,7 @@ defined in the main section of the indjected shader.</b></p>
 
 <!--
 <pre>
-{"comment":"/**\n * This class lets you use your own custom Vertex Shaders along with\n * predefined ThreeJS Fragmet Shaders. This takes away the hastle of\n * writing code for lighting and shaing.\n */","meta":{"range":[253,2491],"filename":"CustomShaderMaterial.js","lineno":9,"columnno":0,"path":"/home/runner/work/THREE-CustomShaderMaterial/THREE-CustomShaderMaterial/src","code":{"id":"astnode100000010","name":"exports.CustomShaderMaterial","type":"ClassDeclaration"},"shortpath":"CustomShaderMaterial.js"},"name":"CustomShaderMaterial","longname":"CustomShaderMaterial","kind":"class","classdesc":"<p>This class lets you use your own custom Vertex Shaders along with\npredefined ThreeJS Fragmet Shaders. This takes away the hastle of\nwriting code for lighting and shaing.</p>","scope":"global","description":"<p>Creates an instance of the <code>CustomShaderMaterial</code> class.</p>\n<p><b>The variable <code>newPos</code> and <code>newNormal</code> must be\ndefined in the main section of the indjected shader.</b></p>","memberof":"CustomShaderMaterial","params":[{"type":{"names":["Object"]},"description":"<p>Options for material.</p>","name":"options","subparams":[{"type":{"names":["string"]},"description":"<p>Base Material. The material whos fragment shader is used. Any type from the exported <code>TYPES</code> object</p>","name":"baseMaterial"},{"type":{"names":["Object"]},"description":"<p>Custom Vertex Shader</p>","name":"vShader","subparams":[{"type":{"names":["string"]},"description":"<p>Constant definitions like - &quot;#define PI = 3.14;&quot;</p>","name":"defines"},{"type":{"names":["string"]},"description":"<p>Code to be injected above main. Place function definitions here.</p>","name":"header"},{"type":{"names":["string"]},"description":"<p>Code to be injected above main. Put main shader code here.</p>","name":"main"}]},null,null,null,{"type":{"names":["Object"]},"description":"<p>Custom Uniforms to be passed to the shader.</p>","name":"uniforms"},{"type":{"names":["Object"]},"description":"<p>Any custom options to be passed to the underlying base material.</p>","name":"passthrough"}]},null,null,null,null,null,null,null],"___id":"T000003R000002","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"CustomShaderMaterial","signature":"<span class=\"signature\">(options)</span><span class=\"type-signature\"></span>","ancestors":[]}
+{"comment":"/**\n * This class lets you use your own custom Vertex Shaders along with\n * predefined ThreeJS Fragmet Shaders. This takes away the hastle of\n * writing code for lighting and shaing.\n */","meta":{"range":[253,2914],"filename":"CustomShaderMaterial.js","lineno":9,"columnno":0,"path":"/home/runner/work/THREE-CustomShaderMaterial/THREE-CustomShaderMaterial/src","code":{"id":"astnode100000010","name":"exports.CustomShaderMaterial","type":"ClassDeclaration"},"shortpath":"CustomShaderMaterial.js"},"name":"CustomShaderMaterial","longname":"CustomShaderMaterial","kind":"class","classdesc":"<p>This class lets you use your own custom Vertex Shaders along with\npredefined ThreeJS Fragmet Shaders. This takes away the hastle of\nwriting code for lighting and shaing.</p>","scope":"global","description":"<p>Creates an instance of the <code>CustomShaderMaterial</code> class.</p>\n<p><b>The variable <code>newPos</code> and <code>newNormal</code> must be\ndefined in the main section of the indjected shader.</b></p>","memberof":"CustomShaderMaterial","params":[{"type":{"names":["Object"]},"description":"<p>Options for material.</p>","name":"options","subparams":[{"type":{"names":["string"]},"description":"<p>Base Material. The material whos fragment shader is used. Any type from the exported <code>TYPES</code> object</p>","name":"baseMaterial"},{"type":{"names":["CustomShader"]},"variable":true,"description":"<p>Custom Vertex Shader</p>","name":"vShader"},{"type":{"names":["CustomShader"]},"variable":true,"description":"<p>Custom Fragment Shader</p>","name":"fShader"},{"type":{"names":["Object"]},"description":"<p>Custom Uniforms to be passed to the shader.</p>","name":"uniforms"},{"type":{"names":["Object"]},"description":"<p>Any custom options to be passed to the underlying base material.</p>","name":"passthrough"}]},null,null,null,null,null],"___id":"T000003R000002","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"CustomShaderMaterial","signature":"<span class=\"signature\">(options)</span><span class=\"type-signature\"></span>","ancestors":[]}
 </pre>
 -->
 </div>
@@ -508,7 +481,7 @@ defined in the main section of the indjected shader.</b></p>
 <div class="pull-right source-link-container">
   <code class="source-link" data-tmpl="method-tmpl(1)">
     <i class="fa fa-file-o"></i>
-    <a href="CustomShaderMaterial.js.html">CustomShaderMaterial.js</a>:<a href="CustomShaderMaterial.js.html#line61">61</a>
+    <a href="CustomShaderMaterial.js.html">CustomShaderMaterial.js</a>:<a href="CustomShaderMaterial.js.html#line73">73</a>
   </code>
 </div>
 
@@ -696,7 +669,7 @@ Make sure to address the uniform by the name of its key.</p>
 
 <!--
 <pre>
-{"comment":"/**\n   * This funciton lets you update a custom uniform you have set.\n   * Make sure to address the uniform by the name of its key.\n   *\n   * @param {string} unifrom Name of the Unifrom to update\n   * @param {any} value      Value to set.\n   */","meta":{"range":[2412,2489],"filename":"CustomShaderMaterial.js","lineno":61,"columnno":2,"path":"/home/runner/work/THREE-CustomShaderMaterial/THREE-CustomShaderMaterial/src","code":{"id":"astnode100000120","name":"CustomShaderMaterial#updateUniform","type":"MethodDefinition","paramnames":["unifrom","value"]},"vars":{"":null},"shortpath":"CustomShaderMaterial.js"},"description":"<p>This funciton lets you update a custom uniform you have set.\nMake sure to address the uniform by the name of its key.</p>","params":[{"type":{"names":["string"]},"description":"<p>Name of the Unifrom to update</p>","name":"unifrom"},{"type":{"names":["any"]},"description":"<p>Value to set.</p>","name":"value"}],"name":"updateUniform","longname":"CustomShaderMaterial#updateUniform","kind":"function","memberof":"CustomShaderMaterial","scope":"instance","___id":"T000002R000018","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"updateUniform","signature":"<span class=\"signature\">(unifrom, value)</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"CustomShaderMaterial.html\">CustomShaderMaterial</a>#"]}
+{"comment":"/**\n   * This funciton lets you update a custom uniform you have set.\n   * Make sure to address the uniform by the name of its key.\n   *\n   * @param {string} unifrom Name of the Unifrom to update\n   * @param {any} value      Value to set.\n   */","meta":{"range":[2835,2912],"filename":"CustomShaderMaterial.js","lineno":73,"columnno":2,"path":"/home/runner/work/THREE-CustomShaderMaterial/THREE-CustomShaderMaterial/src","code":{"id":"astnode100000161","name":"CustomShaderMaterial#updateUniform","type":"MethodDefinition","paramnames":["unifrom","value"]},"vars":{"":null},"shortpath":"CustomShaderMaterial.js"},"description":"<p>This funciton lets you update a custom uniform you have set.\nMake sure to address the uniform by the name of its key.</p>","params":[{"type":{"names":["string"]},"description":"<p>Name of the Unifrom to update</p>","name":"unifrom"},{"type":{"names":["any"]},"description":"<p>Value to set.</p>","name":"value"}],"name":"updateUniform","longname":"CustomShaderMaterial#updateUniform","kind":"function","memberof":"CustomShaderMaterial","scope":"instance","___id":"T000002R000020","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"updateUniform","signature":"<span class=\"signature\">(unifrom, value)</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"CustomShaderMaterial.html\">CustomShaderMaterial</a>#"]}
 </pre>
 -->
 </div>
@@ -719,7 +692,7 @@ Make sure to address the uniform by the name of its key.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Mon May 03 2021 21:54:06 GMT+0000 (Coordinated Universal Time) using the LOKE theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Thu May 06 2021 21:57:35 GMT+0000 (Coordinated Universal Time) using the LOKE theme.
 </footer>
 
 <script>prettyPrint();</script>
