@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head><link rel="icon" href="/Assets/logo.png" type="image/png"/>
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
   <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
   <link type="text/css" rel="stylesheet" href="styles/app.min.css">
   <link type="text/css" rel="stylesheet" href="styles/iframe.css">
-  <link type="text/css" rel="stylesheet" href="">
+  <link type="text/css" rel="stylesheet" href="Assets/docs.css">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 
   
@@ -39,6 +39,10 @@
             <span aria-hidden="true"></span>
         </a>
         <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="Assets/logo.png" alt="logo">
+                </a>
             
              
                 <a href="index.html">
@@ -122,7 +126,10 @@
     <section>
         <article><br />
 <p align="center">
-  <h1 align="center">THREE-CustomShaderMaterial</h1>
+   <a href="">
+        <img src="./Assets/icon.png" alt="Logo" width="300" height="300">
+    </a>
+  <h1 align="center"><sup>THREE</sup>CustomShaderMaterial</h1>
   <p align="center">
     Extend Three.js standard materials with your own vertex shaders!
     <br />
@@ -144,6 +151,9 @@
 </code></pre>
 <p>Install through NPM</p>
 <pre class="prettyprint source lang-bash"><code>$ npm i three-custom-shader-material
+</code></pre>
+<p>Install through Yarn</p>
+<pre class="prettyprint source lang-bash"><code>$ yarn add three-custom-shader-material
 </code></pre>
 <p>For Browsers, download <code>build/three-csm.js</code>.</p>
 <h2>Importing</h2>
@@ -173,26 +183,41 @@ import fdefines from &quot;example/shaders/fdefines.js&quot;;
 // ...
 
 const material = new CustomShaderMaterial({
+    // Required
     baseMaterial: TYPES.PHYSICAL,       // Material to extend
+    // Required
     vShader: {
         defines: defines,           
         header: header,                 // Custom Vertex Shader
         main: main,
     },
+    // Optional
+    fShader: {
+        defines: defines,           
+        header: header,                 // Custom Fragment Shader
+        main: main,
+    },
+    // Optional
     uniforms: { 
         three_noise_seed: { value: 2 } // Custom uniforms
     }, 
+    // Optional
     passthrough: {
         wireframe: false,
-        lights: true,                   // Options passthrough to unerlying material.
+        lights: true,                   // options passthrough to unerlying material.
   },
 });
 
 const plane = new THREE.Mesh(geometry, material); // Use like a regular material
 </code></pre>
 <h2>Note</h2>
-<p>The variables <code>newPos</code> and <code>newNormal</code> must be defined in the <code>main</code> section of the injected shader. See the example shaders for how to format shaders for use with CSM.</p>
-<p>Variable <code>gl_FragColor</code> must be assigned a value in the <code>main</code> section of the fragment shader.</p></article>
+<ul>
+<li>The variables <code>newPos</code> and <code>newNormal</code> must be defined in the <code>main</code> section of the custom vertex shader.</li>
+<li>The Variable <code>newColor</code> must be assigned a value in the <code>main</code> section of the custom fragment shader.</li>
+</ul>
+<p>See the example shaders for how to format shaders for use with CSM or use the <code>loadShadersCSM</code> loader from my library <a href="https://github.com/FarazzShaikh/glNoise">glNoise</a>.</p>
+<h2>Credits</h2>
+<p>Icon made by <a href="https://www.freepik.com">Freepik</a> from <a href="https://www.flaticon.com/">www.flaticon.com</a>.</p></article>
     </section>
 
 

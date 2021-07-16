@@ -23,10 +23,10 @@ export default [
   {
     input: "index.ts",
     output: {
-      file: "build/glNoise.m.js",
+      file: "build/glNoise.m.node.js",
       format: "es",
     },
-    external: ["fs/promises", "path"],
+    external: ["fs", "path"],
     plugins: [glslify(glslOpts), typescript(tscOpts)],
   },
   {
@@ -36,7 +36,7 @@ export default [
       format: "iife",
       name: "glNoise",
     },
-    external: ["fs/promises", "path"],
+    external: ["fs", "path"],
     plugins: [glslify(glslOpts), typescript(tscOpts)],
   },
 ];

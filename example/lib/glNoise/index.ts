@@ -1,36 +1,37 @@
 import _Perlin from "./src/Perlin.glsl";
 import _Simplex from "./src/Simplex.glsl";
-import _Voronoi from "./src/Voronoi.glsl";
+import _Worley from "./src/Worley.glsl";
+import _BlendModes from "./src/BlendModes.glsl";
 import _Common from "./src/Common.glsl";
-
-const _Head = "precision highp float;\n" + _Common + "\n";
+import _GerstnerWave from "./src/GerstnerWave.glsl";
 
 export const Perlin: string = _Perlin;
 export const Simplex: string = _Simplex;
-export const Voronoi: string = _Voronoi;
-export const Head: string = _Head;
+export const Worley: string = _Worley;
+export const BlendModes: string = _BlendModes;
+export const Common: string = _Common;
+export const GerstnerWave: string = _GerstnerWave;
 
-const _all = [Perlin, Simplex, Voronoi];
+const _all = [Perlin, Simplex, Worley, BlendModes, GerstnerWave];
 
-const isNode =
-  typeof process !== "undefined" &&
-  process.versions != null &&
-  process.versions.node != null;
+const isNode = typeof process !== "undefined" && process.versions != null && process.versions.node != null;
 
+//~START~
 async function nodeFetch(s: string) {
   // @ts-ignore
-  const fs = (await import("fs/promises")).default;
+  const fs = await import("fs");
   // @ts-ignore
   const path = (await import("path")).default;
 
-  const f = (await fs.readFile(path.resolve(s))).toString();
+  const f = fs.readFileSync(path.resolve(s));
 
   return {
     text: async function () {
-      return f;
+      return f.toString();
     },
   };
 }
+//~END~
 
 /**
  * Loads Shaders without appeneding any Shader Chunks.
@@ -59,9 +60,15 @@ export async function loadShadersRaw(shaders: string[]) {
  * @async
  * @param {string[]} paths      Array of Paths to shaders.
  * @param {string[][]} chunks   Array of chunks to append to each shader
+ * @param {string[]} headers    Array of headers to be appended to each shader. Can be used to provide precision;
  * @returns {Promise<string[]>}          Array of shaders corresponding to each path with respective chunks applied.
  *
  * @example
+ * const head = `
+ * precision highp float;
+ * ${Common}
+ * `;
+ *
  * const chunks = [
  *      [Perlin, Simplex],
  *      []
@@ -70,18 +77,32 @@ export async function loadShadersRaw(shaders: string[]) {
  *      "vert.glsl",
  *      "frag.glsl",
  * ];
- * const [vert, frag] = await loadShaders(paths, chunks);
+ * const [vert, frag] = await loadShaders(paths, chunks, head);
  */
-export async function loadShaders(paths: string[], chunks?: string[][]) {
+export async function loadShaders(paths: string[], chunks?: string[][], headers?: string[]) {
+  if (!paths || paths.length <= 0) throw new Error("glNoise::loadShaders requires atleast one path.");
+  if (!headers) headers = new Array(paths.length).fill(Common);
+
   let shaders: string[] = await loadShadersRaw(paths);
 
   if (chunks) {
     shaders = shaders.map((s, i) => {
-      return _Head + chunks[i].join("\n") + "\n" + s;
+      let c: string[];
+      if (chunks[i]) c = chunks[i];
+      else c = _all;
+
+      let h: string;
+      if (headers[i]) h = headers[i];
+      else h = Common;
+
+      return h + c.join("\n") + "\n" + s;
     });
   } else {
-    shaders = shaders.map((s) => {
-      return _Head + _all.join("\n") + "\n" + s;
+    shaders = shaders.map((s, i) => {
+      let h: string;
+      if (headers[i]) h = headers[i];
+      else h = Common;
+      return h + _all.join("\n") + "\n" + s;
     });
   }
 
@@ -128,13 +149,13 @@ export async function loadShadersCSM(
 
   if (!chunks)
     return {
-      defines: _Head + _defines,
+      defines: _defines + Common,
       header: _all.join("\n") + "\n" + _header,
       main: _main,
     };
 
   return {
-    defines: _Head + _defines,
+    defines: _defines + Common,
     header: chunks.join("\n") + "\n" + _header,
     main: _main,
   };
