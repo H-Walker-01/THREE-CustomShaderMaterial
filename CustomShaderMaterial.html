@@ -90,7 +90,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomShaderMaterial.html">CustomShaderMaterial</a></li></ul><h3><a href="global.html">Global</a></h3></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomShaderMaterial.html">CustomShaderMaterial</a></li></ul><h3>Interfaces</h3><ul><li><a href="iCustomShader.html">iCustomShader</a></li><li><a href="iOptions.html">iOptions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#TYPES">TYPES</a></li><li><a href="global.html#uniforms">uniforms</a></li></ul></div>
                 
             </nav>
         </div>
@@ -145,13 +145,6 @@ writing code for lighting and shaing.</div>
 
     
     
-    <div class="description">
-        Creates an instance of the <code>CustomShaderMaterial</code> class.
-
-<b>The variable <code>newPos</code> and <code>newNormal</code> must be
-defined in the main section of the indjected shader.</b>
-    </div>
-    
 
 
 
@@ -174,8 +167,6 @@ defined in the main section of the indjected shader.</b>
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
             
 
@@ -195,190 +186,18 @@ defined in the main section of the indjected shader.</b>
   <td class="type">
   
       
-<span class="param-type">Object</span>
+<span class="param-type"><a href="iOptions.html">iOptions</a></span>
 
 
   
   </td>
 
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
   
 
   
 
   <td class="description last">Options for material.</td>
 </tr>
-
-  
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>baseMaterial</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last">Base Material. The material whos fragment shader is used. Any type from the exported <code>TYPES</code> object</td>
-</tr>
-
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>vShader</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type"><a href="global.html#CustomShader">CustomShader</a></span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last">Custom Vertex Shader</td>
-</tr>
-
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>fShader</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type"><a href="global.html#CustomShader">CustomShader</a></span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last">Custom Fragment Shader</td>
-</tr>
-
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>uniforms</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Object</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last">Custom Uniforms to be passed to the shader.</td>
-</tr>
-
-  
-    
-<tr class="deep-level-1">
-  
-      <td class="name"><code>passthrough</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Object</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-
-  <td class="description last">Any custom options to be passed to the underlying base material.</td>
-</tr>
-
-  
 
 
         
@@ -423,9 +242,9 @@ defined in the main section of the indjected shader.</b>
 
     
         <p class="tag-source">
-            <a href="CustomShaderMaterial.js.html" class="button">View Source</a>
+            <a href="CustomShaderMaterial.ts.html" class="button">View Source</a>
             <span>
-                <a href="CustomShaderMaterial.js.html">CustomShaderMaterial.js</a>, <a href="CustomShaderMaterial.js.html#line16">line 16</a>
+                <a href="CustomShaderMaterial.ts.html">CustomShaderMaterial.ts</a>, <a href="CustomShaderMaterial.ts.html#line8">line 8</a>
             </span>
         </p>
     
@@ -468,13 +287,15 @@ defined in the main section of the indjected shader.</b>
     },
     uniforms: {
         uTime: { value: 1.0 },
-        uResolution: { value: new THREE.Vector3() },
+        uResolution: { value: new THREE.Vector2() },
     },
     passthrough: {
         flatShading: true,
     },
 });
-material.uniforms.uResolution.set(1920, 1080, 0);</code></pre>
+
+if(material.uniforms)
+   material.uniforms.uResolution.set(1920, 1080);</code></pre>
     
 
 

@@ -90,7 +90,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomShaderMaterial.html">CustomShaderMaterial</a></li></ul><h3><a href="global.html">Global</a></h3></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomShaderMaterial.html">CustomShaderMaterial</a></li></ul><h3>Interfaces</h3><ul><li><a href="iCustomShader.html">iCustomShader</a></li><li><a href="iOptions.html">iOptions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#TYPES">TYPES</a></li><li><a href="global.html#uniforms">uniforms</a></li></ul></div>
                 
             </nav>
         </div>
@@ -174,29 +174,21 @@
     
 
     
-
-    
-
-    
         <div class='vertical-section'>
-            <h1>Type Definitions</h1>
+            <h1>Members</h1>
             <div class="members">
             
                 <div class="member">
 
-    <span class="method-parameter is-pulled-right">
-        <label>Type:</label>
+<h4 class="name" id="TYPES">
+    <a class="href-link" href="#TYPES">#</a>
+    
         
-<span class="param-type">Object</span>
-
-
-    </span>
-
-<h4 class="name" id="CustomShader">
-    <a class="href-link" href="#CustomShader">#</a>
+            <span class='tag'>constant</span>
+        
     
     <span class="code-name">
-        CustomShader
+        TYPES
     </span>
     
 </h4>
@@ -234,7 +226,7 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>defines</code></td>
+        <td class="name"><code>NORMAL</code></td>
     
 
     <td class="type">
@@ -250,14 +242,14 @@
 
     
 
-    <td class="description last">Constant definitions like - "#define PI = 3.14;"</td>
+    <td class="description last">MeshNormalMaterial</td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>header</code></td>
+        <td class="name"><code>BASIC</code></td>
     
 
     <td class="type">
@@ -273,14 +265,14 @@
 
     
 
-    <td class="description last">Code to be injected above main. Place function definitions here.</td>
+    <td class="description last">MeshBasicMaterial</td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>main</code></td>
+        <td class="name"><code>PHONG</code></td>
     
 
     <td class="type">
@@ -296,7 +288,145 @@
 
     
 
-    <td class="description last">Code to be injected above main. Put main shader code here.</td>
+    <td class="description last">MeshPhongMaterial</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>MATCAP</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">MeshMatcapMaterial</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>TOON</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">MeshToonMaterial</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>PHYSICAL</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">MeshPhysicalMaterial</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>LAMBERT</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">MeshLambertMaterial</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>DEPTH</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">MeshDepthMaterial</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>POINTS</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">PointsMaterial</td>
 </tr>
 
         
@@ -339,9 +469,472 @@
 
     
         <p class="tag-source">
-            <a href="CustomShaderMaterial.js.html" class="button">View Source</a>
+            <a href="Types.ts.html" class="button">View Source</a>
             <span>
-                <a href="CustomShaderMaterial.js.html">CustomShaderMaterial.js</a>, <a href="CustomShaderMaterial.js.html#line4">line 4</a>
+                <a href="Types.ts.html">Types.ts</a>, <a href="Types.ts.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type"><a href="global.html#tUniforms">tUniforms</a></span>
+
+
+    </span>
+
+<h4 class="name" id="uniforms">
+    <a class="href-link" href="#uniforms">#</a>
+    
+    <span class="code-name">
+        uniforms
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Uniforms of the material. May be undefined.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="CustomShaderMaterial.ts.html" class="button">View Source</a>
+            <span>
+                <a href="CustomShaderMaterial.ts.html">CustomShaderMaterial.ts</a>, <a href="CustomShaderMaterial.ts.html#line131">line 131</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Type Definitions</h1>
+            <div class="members">
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object.&lt;string></span>
+
+
+    </span>
+
+<h4 class="name" id="tMaterialTypes">
+    <a class="href-link" href="#tMaterialTypes">#</a>
+    
+    <span class="code-name">
+        tMaterialTypes
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>{...}</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Types.ts.html" class="button">View Source</a>
+            <span>
+                <a href="Types.ts.html">Types.ts</a>, <a href="Types.ts.html#line27">line 27</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object.&lt;THREE.MaterialParameters></span>
+
+
+    </span>
+
+<h4 class="name" id="tPassthrough">
+    <a class="href-link" href="#tPassthrough">#</a>
+    
+    <span class="code-name">
+        tPassthrough
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>{...}</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">THREE.MaterialParameters</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Types.ts.html" class="button">View Source</a>
+            <span>
+                <a href="Types.ts.html">Types.ts</a>, <a href="Types.ts.html#line37">line 37</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<span class="param-type">Object.&lt;THREE.IUniform.&lt;any>></span>
+
+
+    </span>
+
+<h4 class="name" id="tUniforms">
+    <a class="href-link" href="#tUniforms">#</a>
+    
+    <span class="code-name">
+        tUniforms
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>{...}</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">THREE.IUniform.&lt;any></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Types.ts.html" class="button">View Source</a>
+            <span>
+                <a href="Types.ts.html">Types.ts</a>, <a href="Types.ts.html#line32">line 32</a>
             </span>
         </p>
     

@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CSM |  Home</title>
+  <title>CSM |  iOptions</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,130 +97,250 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Interface</p>
+                    <h1>iOptions</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
+    
+        <h2>iOptions</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>baseMaterial</code></td>
     
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
 
 
     
+    </td>
+
+    
+
+    
+
+    <td class="description last">Base Material. The material whos fragment shader is used. Any type from the exported <code>TYPES</code> object.</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>vShader</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="iCustomShader.html">iCustomShader</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Custom Vertex Shader</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>fShader</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="iCustomShader.html">iCustomShader</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Custom Fragment Shader</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>uniforms</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#tUniforms">tUniforms</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Custom Uniforms to be passed to the shader.</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>passthrough</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type"><a href="global.html#tPassthrough">tPassthrough</a></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Any custom options to be passed to the underlying base material.</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
+<dl class="details">
 
-    <section>
-        <article><br />
-<p align="center">
-   <a href="">
-        <img src="./Assets/icon.png" alt="Logo" width="300" height="300">
-    </a>
-  <h1 align="center"><sup>THREE</sup>CustomShaderMaterial</h1>
-  <p align="center">
-    Extend Three.js standard materials with your own vertex shaders!
-    <br />
-    <a href="https://farazzshaikh.github.io/THREE-CustomShaderMaterial/example/index.html">View Demo</a>
-    ·
-    <a href="https://github.com/FarazzShaikh/THREE-CustomShaderMaterial/issues/new">Report Bug</a>
-    ·
-    <a href="https://farazzshaikh.github.io/THREE-CustomShaderMaterial/">API Docs</a>
-  </p>
-  <p align="center">
-    <a href="https://www.npmjs.com/package/three-custom-shader-material"><img align="center" src="https://img.shields.io/npm/v/three-custom-shader-material?color=cc3534&style=for-the-badge" /></a>
-  </p>
-</p>
-<h2>BREAKING</h2>
-<p>Version 2.0.0 introduces potentially breaking changes. Please read the API and adjust your code accordingly.</p>
-<h2>Installation</h2>
-<p>Make sure to have ThreeJS installed.</p>
-<pre class="prettyprint source lang-bash"><code>$ npm i three
-</code></pre>
-<p>Install through NPM</p>
-<pre class="prettyprint source lang-bash"><code>$ npm i three-custom-shader-material
-</code></pre>
-<p>Install through Yarn</p>
-<pre class="prettyprint source lang-bash"><code>$ yarn add three-custom-shader-material
-</code></pre>
-<p>For Browsers, download <code>build/three-csm.js</code>.</p>
-<h2>Importing</h2>
-<h3>Browser</h3>
-<p>In your HTML</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;lib/three-csm.js&quot;>&lt;/script>
-&lt;script src=&quot;./main.js&quot; defer>&lt;/script>
-</code></pre>
-<p>Then, in your JavaScript you can use the <code>THREE_Noise</code> object.</p>
-<pre class="prettyprint source lang-js"><code>const { CustomShaderMaterial, TYPES } = THREE_CustomShaderMaterial;
-</code></pre>
-<h3>NodeJS</h3>
-<p>In NodeJS, you can import it like you normally do.</p>
-<pre class="prettyprint source lang-js"><code>import {CustomShaderMaterial, TYPES} from &quot;three-custom-shader-material&quot;
-</code></pre>
-<h2>Usage</h2>
-<pre class="prettyprint source lang-js"><code>// Import GLSL vertex shaders as strings
-import header from &quot;example/shaders/header.js&quot;;
-import main from &quot;example/shaders/main.js&quot;;
-import defines from &quot;example/shaders/defines.js&quot;;
+    
 
-// Import GLSL fragment shaders as strings
-import fheader from &quot;example/shaders/fheader.js&quot;;
-import fmain from &quot;example/shaders/fmain.js&quot;;
-import fdefines from &quot;example/shaders/fdefines.js&quot;;
+    
 
-// ...
+    
 
-const material = new CustomShaderMaterial({
-    // Required
-    baseMaterial: TYPES.PHYSICAL,       // Material to extend
-    // Required
-    vShader: {
-        defines: defines,           
-        header: header,                 // Custom Vertex Shader
-        main: main,
-    },
-    // Optional
-    fShader: {
-        defines: fdefines,           
-        header: fheader,                 // Custom Fragment Shader
-        main: fmain,
-    },
-    // Optional
-    uniforms: { 
-        three_noise_seed: { value: 2 }  // Custom uniforms
-    }, 
-    // Optional
-    passthrough: {
-        wireframe: false,
-        lights: true,                   // options passthrough to unerlying material.
-  },
-});
+    
 
-const plane = new THREE.Mesh(geometry, material); // Use like a regular material
-</code></pre>
-<h2>Note</h2>
-<ul>
-<li>The variables <code>newPos</code> and <code>newNormal</code> must be defined in the <code>main</code> section of the custom vertex shader.</li>
-<li>The Variable <code>newColor</code> must be assigned a value in the <code>main</code> section of the custom fragment shader.</li>
-</ul>
-<p>See the example shaders for how to format shaders for use with CSM or use the <code>loadShadersCSM</code> loader from my library <a href="https://github.com/FarazzShaikh/glNoise">glNoise</a>.</p>
-<h2>Credits</h2>
-<p>Icon made by <a href="https://www.freepik.com">Freepik</a> from <a href="https://www.flaticon.com/">www.flaticon.com</a>.</p></article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="global.html#TYPES">TYPES</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Types.ts.html" class="button">View Source</a>
+            <span>
+                <a href="Types.ts.html">Types.ts</a>, <a href="Types.ts.html#line51">line 51</a>
+            </span>
+        </p>
+    
+</dl>
 
 
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
