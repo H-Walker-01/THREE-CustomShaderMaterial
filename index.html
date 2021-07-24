@@ -143,79 +143,154 @@
     <a href="https://www.npmjs.com/package/three-custom-shader-material"><img align="center" src="https://img.shields.io/npm/v/three-custom-shader-material?color=cc3534&style=for-the-badge" /></a>
   </p>
 </p>
-<h2>BREAKING</h2>
-<p>Version 2.0.0 introduces potentially breaking changes. Please read the API and adjust your code accordingly.</p>
 <h2>Installation</h2>
-<p>Make sure to have ThreeJS installed.</p>
-<pre class="prettyprint source lang-bash"><code>$ npm i three
+<pre class="prettyprint source lang-bash"><code>npm install three-custom-shader-material
+# or
+yarn add three-custom-shader-material
 </code></pre>
-<p>Install through NPM</p>
-<pre class="prettyprint source lang-bash"><code>$ npm i three-custom-shader-material
-</code></pre>
-<p>Install through Yarn</p>
-<pre class="prettyprint source lang-bash"><code>$ yarn add three-custom-shader-material
-</code></pre>
-<p>For Browsers, download <code>build/three-csm.js</code>.</p>
+<p>For Browsers, download files from <code>build/</code>. Here is what each file is:</p>
+<ul>
+<li><code>three-csm.js</code> - IIFE type module for browsers importing Three using a <code>&lt;script&gt;</code> tag.</li>
+<li><code>three-csm.m.js</code> - ES Module. Import Three the NodeJS way <code>import * as THREE from &quot;three&quot;</code></li>
+<li><code>three-csm.m.cdn.js</code> - ES Module. Import Three from a CDN <code>import * as THREE from &quot;https://cdn.skypack.dev/three&quot;</code></li>
+</ul>
 <h2>Importing</h2>
+<h3>NodeJS</h3>
+<p>In NodeJS, you can import it like you normally do.</p>
+<pre class="prettyprint source lang-js"><code>import { CustomShaderMaterial, TYPES } from &quot;three-custom-shader-material&quot;
+</code></pre>
+<h3>ES modules</h3>
+<pre class="prettyprint source lang-js"><code>import { CustomShaderMaterial, TYPES } from &quot;three-csm.m.js&quot;
+// or
+import { CustomShaderMaterial, TYPES } from &quot;three-csm.m.cdn.js&quot;
+</code></pre>
 <h3>Browser</h3>
-<p>In your HTML</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;lib/three-csm.js&quot;>&lt;/script>
-&lt;script src=&quot;./main.js&quot; defer>&lt;/script>
+<p>In HTML using IIFE.</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;three.js&quot;>&lt;/script>
+&lt;script src=&quot;three-csm.js&quot;>&lt;/script>
+
+&lt;!-- Your script -->
+&lt;script src=&quot;main.js&quot; defer>&lt;/script>
 </code></pre>
 <p>Then, in your JavaScript you can use the <code>THREE_Noise</code> object.</p>
 <pre class="prettyprint source lang-js"><code>const { CustomShaderMaterial, TYPES } = THREE_CustomShaderMaterial;
 </code></pre>
-<h3>NodeJS</h3>
-<p>In NodeJS, you can import it like you normally do.</p>
-<pre class="prettyprint source lang-js"><code>import {CustomShaderMaterial, TYPES} from &quot;three-custom-shader-material&quot;
-</code></pre>
 <h2>Usage</h2>
-<pre class="prettyprint source lang-js"><code>// Import GLSL vertex shaders as strings
-import header from &quot;example/shaders/header.js&quot;;
-import main from &quot;example/shaders/main.js&quot;;
-import defines from &quot;example/shaders/defines.js&quot;;
+<pre class="prettyprint source lang-js"><code>// Set up ThreeJS 
+// ... 
 
-// Import GLSL fragment shaders as strings
-import fheader from &quot;example/shaders/fheader.js&quot;;
-import fmain from &quot;example/shaders/fmain.js&quot;;
-import fdefines from &quot;example/shaders/fdefines.js&quot;;
-
-// ...
-
+// Set up CSM
 const material = new CustomShaderMaterial({
-    // Required
-    baseMaterial: TYPES.PHYSICAL,       // Material to extend
-    // Required
+    // Material to extend
+    baseMaterial: TYPES.PHYSICAL,      
     vShader: {
-        defines: defines,           
-        header: header,                 // Custom Vertex Shader
-        main: main,
+        // Custom Vertex Shader
+        defines: await (await fetch(&quot;vert_defines.glsl&quot;)).text(),           
+        header: await (await fetch(&quot;vert_header.glsl&quot;)).text(),                    
+        main: await (await fetch(&quot;vert_main.glsl&quot;)).text(),    
     },
-    // Optional
     fShader: {
-        defines: fdefines,           
-        header: fheader,                 // Custom Fragment Shader
-        main: fmain,
+        // Custom Fragment Shader
+        defines: await (await fetch(&quot;frag_defines.glsl&quot;)).text(),           
+        header: await (await fetch(&quot;frag_header.glsl&quot;)).text(),                    
+        main: await (await fetch(&quot;frag_main.glsl&quot;)).text(),  
     },
-    // Optional
     uniforms: { 
-        three_noise_seed: { value: 2 }  // Custom uniforms
+        // Custom uniforms
+        uTime: { value: 0 }  
     }, 
-    // Optional
     passthrough: {
+        // options passthrough to unerlying material.
         wireframe: false,
-        lights: true,                   // options passthrough to unerlying material.
+        lights: true,                   
   },
 });
 
 const plane = new THREE.Mesh(geometry, material); // Use like a regular material
+
+// ...
+
+function render(time) {
+    if(material.uniforms)
+        material.uniforms.time.value = time;
+
+    // ...
+}
+
 </code></pre>
-<h2>Note</h2>
+<p>Here is what the different keys in the <code>vShader</code> and <code>fShader</code> objects may contain.</p>
 <ul>
-<li>The variables <code>newPos</code> and <code>newNormal</code> must be defined in the <code>main</code> section of the custom vertex shader.</li>
-<li>The Variable <code>newColor</code> must be assigned a value in the <code>main</code> section of the custom fragment shader.</li>
+<li><code>defines</code> - All your macro and pragma definitions.</li>
+<li><code>header</code> - All your global variables, functions, uniforms, varyings and attribute definitions.</li>
+<li><code>main</code> - Main Shader code. Part to be injected into the <code>main()</code> function of the underlying material.</li>
 </ul>
-<p>See the example shaders for how to format shaders for use with CSM or use the <code>loadShadersCSM</code> loader from my library <a href="https://github.com/FarazzShaikh/glNoise">glNoise</a>.</p>
+<p>All shader code passed into CSM must be strings.</p>
+<h2>Output Variables</h2>
+<p>CSM provides the following output variables:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+<th>Available In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>csm_Position</td>
+<td><code>vec3</code></td>
+<td>Custom vertex position.</td>
+<td>Vertex Shader</td>
+</tr>
+<tr>
+<td>csm_Normal</td>
+<td><code>vec3</code></td>
+<td>Custom vertex position.</td>
+<td>Vertex Shader</td>
+</tr>
+<tr>
+<td>csm_DiffuseColor</td>
+<td><code>vec4</code></td>
+<td>Custom frag color.</td>
+<td>Fragment Shader</td>
+</tr>
+</tbody>
+</table>
+<p>You must use these variables like you would use standard GLSL output variables.</p>
+<pre class="prettyprint source lang-c"><code>// gl_Position = position * vec3(2.0);
+csm_Position = position * vec3(2.0);
+</code></pre>
+<p>See the <code>example</code> directory for how to format shaders for use with CSM.</p>
+<h2>Loading Shaders</h2>
+<p>The best way to load shaders for CSM would be to use the <a href="https://github.com/FarazzShaikh/glNoise#loadshaderscsm">loadShaderCSM</a> loader from my library <a href="https://github.com/FarazzShaikh/glNoise">glNoise</a>.</p>
+<p>If you do not want another dependency then your best bets are the following</p>
+<ul>
+<li>Use <code>fetch</code> in the browser like so:<pre class="prettyprint source lang-js"><code>const frag_defines = await (await fetch(&quot;frag_defines.glsl&quot;)).text();
+</code></pre>
+</li>
+<li>Use <code>fs</code> in NodeJS<pre class="prettyprint source lang-js"><code>const frag_defines = await new Promise((res, rej) => {
+    fs.readFile(&quot;frag_defines.glsl&quot;, &quot;utf8&quot;, (err, data) => {
+      if(err) rej(err);
+      res(data);
+    });
+});
+
+// or with fs/promises
+
+const frag_defines = await fs.readFile(&quot;frag_defines.glsl&quot;, &quot;utf8&quot;)
+</code></pre>
+</li>
+<li>Export the shader as a string from a <code>.js</code> file.<pre class="prettyprint source lang-js"><code>  // frag_defines.js
+  export defualt ` // glsl
+      ...
+  `;
+
+  // main.js
+  import frag_defines from &quot;frag_defines.js&quot;;
+</code></pre>
+</li>
+</ul>
 <h2>Credits</h2>
 <p>Icon made by <a href="https://www.freepik.com">Freepik</a> from <a href="https://www.flaticon.com/">www.flaticon.com</a>.</p></article>
     </section>
